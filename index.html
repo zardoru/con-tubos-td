@@ -34,8 +34,8 @@
             <div class="panel-heading">Configuración geométrica</div>
             <div class="panel-body">
               <form action="">
-              <input type="radio" name="banco_tubos" id="ra_Alineados" value="alineados" checked/> Alineados  </br>
-              <input type="radio" name="banco_tubos" id="ra_Escalonados" value="escalonados"/> Escalonados </br>
+              <input type="radio" name="banco_tubos" id="ra_Alineados" onclick="updVars()" value="alineados" checked/> Alineados  </br>
+              <input type="radio" name="banco_tubos" id="ra_Escalonados" onclick="updVars()" value="escalonados"/> Escalonados </br>
                 <table class="table">
                   <tr> <td>Variable</td><td>Descripción</td><td>Valor</td> </tr>
                   <tr> <td>N<sub>T</sub></td><td>Numero de filas</td><td><input type="text" onchange="updVars()" value="1" id="tb_N_t"/></td> </tr>

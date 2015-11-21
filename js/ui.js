@@ -65,7 +65,7 @@ function getk() {
 }
 
 function getL() {
-  return comp_num("tb_l");
+  return comp_num("tb_L");
 }
 
 function getCp() {
