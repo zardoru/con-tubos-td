@@ -22,60 +22,127 @@
   </head>
 
   <body>
-    <div class="container">
+  <div class="container">
 
-      <div class="starter-template">
-        <h1>Tipo de banco de tubos</h1>
-        <img src="img/ilustracion_tubos.png"/>
-        <form action="">
-          <input type="radio" name="banco_tubos" id="ra_Alineados" value="alineados" checked/> Alineados  </br>
-          <input type="radio" name="banco_tubos" id="ra_Escalonados" value="escalonados"/> Escalonados </br>
-        </form>
+  <div class="starter-template">
+      <h1>Tipo de banco de tubos</h1>
+      <img src="img/ilustracion_tubos.png"/>
 
-        <h1>Datos de entrada iniciales</h1>
-        <form action="">
-          <table class="table">
-            <tr> <td>Variable</td><td>Descripcion</td><td>Valor</td> </tr>
-            <tr> <td>N<sub>T</sub></td><td>Numero de filas</td><td><input type="text" onchange="updVars()" value="1" id="tb_N_t"/></td> </tr>
-            <tr> <td>N<sub>L</sub></td><td>Numero de columnas</td><td><input type="text" onchange="updVars()" value="1" id="tb_N_l"/></td> </tr>
-            <tr> <td>S<sub>T</sub></td><td>Paso transversal [m]</td><td><input type="text" onchange="updVars()" value="1" id="tb_S_t"/></td> </tr>
-            <tr> <td>S<sub>L</sub></td><td>Distancia entre columnas [m]</td><td><input type="text" onchange="updVars()" value="1" id="tb_S_l"/></td> </tr>
-            <tr> <td>D</td><td>Diámetro de los tubos [m]</td><td><input type="text" onchange="updVars()" value="1" id="tb_D"/></td> </tr>
-            <tr> <td>L</td><td>Longitud de los tubos [m]</td><td><input type="text" onchange="updVars()" value="1" id="tb_L"/></td> </tr>
-          </table>
-        </form>
+      <div class="panel-group">
 
-        <h1> Variables del fluído exterior </h1>
-        <form action="">
+        <div class="panel panel-default">
+            <div class="panel-heading">Configuración geométrica</div>
+            <div class="panel-body">
+              <form action="">
+              <input type="radio" name="banco_tubos" id="ra_Alineados" value="alineados" checked/> Alineados  </br>
+              <input type="radio" name="banco_tubos" id="ra_Escalonados" value="escalonados"/> Escalonados </br>
+                <table class="table">
+                  <tr> <td>Variable</td><td>Descripción</td><td>Valor</td> </tr>
+                  <tr> <td>N<sub>T</sub></td><td>Numero de filas</td><td><input type="text" onchange="updVars()" value="1" id="tb_N_t"/></td> </tr>
+                  <tr> <td>N<sub>L</sub></td><td>Numero de columnas</td><td><input type="text" onchange="updVars()" value="1" id="tb_N_l"/></td> </tr>
+                  <tr> <td>S<sub>T</sub></td><td>Paso transversal [m]</td><td><input type="text" onchange="updVars()" value="1" id="tb_S_t"/></td> </tr>
+                  <tr> <td>S<sub>L</sub></td><td>Distancia entre columnas [m]</td><td><input type="text" onchange="updVars()" value="1" id="tb_S_l"/></td> </tr>
+                  <tr> <td>D</td><td>Diámetro de los tubos [m]</td><td><input type="text" onchange="updVars()" value="1" id="tb_D"/></td> </tr>
+                  <tr> <td>L</td><td>Longitud de los tubos [m]</td><td><input type="text" onchange="updVars()" value="1" id="tb_L"/></td> </tr>
+                </table>
+              </form>
+          </div>
+        </div>
 
-          <table class="table">
-            <tr><td>Variable</td><td>Descripcion</td><td>Valor</td> </tr>
-            <tr><td>T<sub>i</sub></td><td>Temperatura de entrada del fluido [C]</td><td><input type="text" onchange="updVars()" value="1" id="tb_T_i"/></td> </tr>
-            <tr><td>T<sub>s</sub></td><td>Temperatura superficial exterior del tubo [C]</td><td><input type="text" onchange="updVars()" value="1" id="tb_T_s"/></td> </tr>
-            <tr><td>V<sub>m</sub></td><td>Velocidad media del fluído [m/s]</td><td><input type="text" onchange="updVars()" value="1" id="tb_V_m"/></td></tr>
-          </table>
-        </form>
-        <p>Valor de temperatura película supuesta (Sin corrección) (T<sub>fsp</sub>) <div id="div_tfsp">Desconocida</div></p>
 
-        <h1> Propiedades térmicas del fluido exterior </h1>
-        <form action="">
-          <table class="table">
-            <tr> <td>Variable</td><td>Descripcion</td><td>Valor</td> </tr>
-            <tr> <td>k</td><td>Conductividad térmica</td><td><input type="text" onchange="updVars()" value="1" id="tb_k"/></td> </tr>
-            <tr> <td>&Rho;</td><td>Densidad</td><td><input type="text" onchange="updVars()" value="1" id="tb_Ro"/></td> </tr>
-            <tr> <td>&Mu;</td><td>Viscosidad dinámica</td><td><input type="text" onchange="updVars()" value="1" id="tb_Mu"/></td> </tr>
-            <tr> <td>Pr</td><td>Número de Prandatl</td><td><input type="text" onchange="updVars()" value="1" id="tb_Pr"/></td> </tr>
-            <tr> <td>C<sub>p</sub></td><td>Calor específico</td><td><input type="text" onchange="updVars()" value="1" id="tb_C_p"/></td> </tr>
-            <tr> <td>&Mu;<sub>s</sub></td><td>Viscosidad dinámica en T<sub>s</sub></td><td><input type="text" onchange="updVars()" value="1" id="tb_Mu_s"/></td> </tr>
-            <tr> <td>Pr<sub>s</sub></td><td>Número de Prandatl a temperatura T<sub>s</sub></td><td><input type="text" onchange="updVars()" value="1" id="tb_Pr_s"/></td> </tr>
-          </table>
-        </form>
+        <div class="panel panel-default">
+          <div class="panel-heading">Variables del fluído exterior</div>
+          <div class="panel-body">
+            <form action="">
+              <table class="table">
+                <tr><td>Variable</td><td>Descripción</td><td>Valor</td> </tr>
+                <tr><td>T<sub>i</sub></td><td>Temperatura de entrada del fluido [C]</td><td><input type="text" onchange="updVars()" value="1" id="tb_T_i"/></td> </tr>
+                <tr><td>T<sub>s</sub></td><td>Temperatura superficial exterior del tubo [C]</td><td><input type="text" onchange="updVars()" value="1" id="tb_T_s"/></td> </tr>
+                <tr><td>V<sub>m</sub></td><td>Velocidad media del fluído [m/s]</td><td><input type="text" onchange="updVars()" value="1" id="tb_V_m"/></td></tr>
+              </table>
+            </form>
+          </div>
+        </div>
 
-        <p>Valor de velocidad máxima en base a la configuracion geométrica elegida: <div id="div_vmax">Desconocida</div></p>
-        <p>Valor del número de Reynolds: <div id="div_re">Desconocida</div> </p>
-        <p>Valor del número de Nusselt: <div id="div_Nu">Desconocida</div> </p>
-      </div>
+        <div class="panel panel-info">
+          <div class="panel-heading"> Valor de temperatura película supuesta (Sin corrección) (T<sub>fsp</sub>)</div>
+          <div class="panel-body" id="div_tfsp">Desconocida</div></p>
+        </div>
 
+        <div class="panel panel-default">
+          <div class="panel-heading"> Propiedades térmicas del fluido exterior </div>
+          <div class="panel-body">
+            <form action="">
+              <table class="table">
+                <tr> <td>Variable</td><td>Descripción</td><td>Valor</td> </tr>
+                <tr> <td>k</td><td>Conductividad térmica</td><td><input type="text" onchange="updVars()" value="1" id="tb_k"/></td> </tr>
+                <tr> <td>&Rho;</td><td>Densidad</td><td><input type="text" onchange="updVars()" value="1" id="tb_Ro"/></td> </tr>
+                <tr> <td>&Mu;</td><td>Viscosidad dinámica</td><td><input type="text" onchange="updVars()" value="1" id="tb_Mu"/></td> </tr>
+                <tr> <td>Pr</td><td>Número de Prandatl</td><td><input type="text" onchange="updVars()" value="1" id="tb_Pr"/></td> </tr>
+                <tr> <td>C<sub>p</sub></td><td>Calor específico</td><td><input type="text" onchange="updVars()" value="1" id="tb_C_p"/></td> </tr>
+                <tr> <td>&Mu;<sub>s</sub></td><td>Viscosidad dinámica en T<sub>s</sub></td><td><input type="text" onchange="updVars()" value="1" id="tb_Mu_s"/></td> </tr>
+                <tr> <td>Pr<sub>s</sub></td><td>Número de Prandatl a temperatura T<sub>s</sub></td><td><input type="text" onchange="updVars()" value="1" id="tb_Pr_s"/></td> </tr>
+              </table>
+            </form>
+          </div>
+        </div>
+
+
+        <div class="panel panel-info">
+          <div class="panel-heading">Valor de velocidad máxima en base a la configuracion geométrica elegida</div>
+          <div class="panel-body" id="div_vmax">Desconocida</div>
+        </div>
+
+        <div class="panel panel-info">
+          <div class="panel-heading">Valor del número de Reynolds</div>
+          <div class="panel-body" id="div_re">Desconocida</div>
+        </div>
+
+        <div class="panel panel-info">
+          <div class="panel-heading">Valor del número de Nusselt</div>
+          <div class="panel-body" id="div_Nu">Desconocida</div>
+        </div>
+
+        <div class="panel panel-info">
+          <div class="panel-heading">Coeficiente de transferencia de calor por convección</div>
+          <div class="panel-body" id="div_h">Desconocida</div>
+        </div>
+
+        <div class="panel panel-info">
+          <div class="panel-heading">Area superficial de acuerdo a la conf. geométrica</div>
+          <div class="panel-body" id="div_As">Desconocida</div>
+        </div>
+
+        <div class="panel panel-info">
+          <div class="panel-heading">Flujo másico del fluido</div>
+          <div class="panel-body" id="div_m">Desconocida</div>
+        </div>
+
+        <div class="panel panel-info">
+          <div class="panel-heading">Temperatura de salida del fluido</div>
+          <div class="panel-body" id="div_Te">Desconocida</div>
+        </div>
+
+
+        <div class="panel panel-info">
+          <div class="panel-heading">Relación del valor de T<sub>fsp</sub> para comprobación</div>
+          <div class="panel-body" id="div_tfspr">Desconocida</div>
+        </div>
+
+
+        <div class="panel panel-info">
+          <div class="panel-heading">Diferencial de temperatura</div>
+          <div class="panel-body" id="div_dt">Desconocida</div>
+        </div>
+
+        <div class="panel panel-info">
+          <div class="panel-heading">Transferencia de calor</div>
+          <div class="panel-body" id="div_Q">Desconocida</div>
+        </div>
+
+      </div>  <!-- panel group -->
+
+    </div>
     </div><!-- /.container -->
 
 

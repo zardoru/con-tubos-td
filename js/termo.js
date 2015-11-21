@@ -96,6 +96,26 @@ function flujo_masico(ro, Vm, Nt, St, L) {
   return ro * Vm * Nt * St * L;
 }
 
+function area_superficial(D, L, Nt, Nl) {
+  return Math.PI * D * L * Nt * Nl;
+}
+
+function temp_salida(Ts, Ti, h, As, m, Cp) {
+  return Ts - (Ts - Ti) * Math.exp( - (h * As) / (m * Cp) );
+}
+
+function ratio_comprob(Ti, Te, Tfsp) {
+  return (Ti + Te) * 0.5 / Tfsp;
+}
+
+function diferencial_temperatura(Ti, Ts, Te) {
+  return (Ti - Te) / Math.log( (Ts - Te) / (Ts - Ti) );
+}
+
+function calor(h, as, dt) {
+  return h * as * dt;
+}
+
 function vmax(alineado, St, Sl, Vm, D) {
   if (alineado) return vmax_alineado(St, D, Vm);
   else return vmax_escalonado(St, Sl, D, Vm);
