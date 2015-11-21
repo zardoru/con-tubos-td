@@ -36,56 +36,56 @@ var tabla_nusselt = {
     rg: enRango(0, 100),
     val: nusselt(0.9, 0, 0.4, 0.36),
     alineado: true,
-    aplicarStSl: false
   },
   {
     rg: enRango(100, 1000),
     val: nusselt(0.52, 0, 0.5, 0.36),
     alineado: true,
-    aplicarStSl: false
   },
   {
     rg: enRango(1000, 200000),
     val: nusselt(0.27, 0, 0.63, 0.36),
     alineado: true,
-    aplicarStSl: false
   },
   {
     rg: enRango(200000, 2000000),
     val: nusselt(0.033, 0, 0.8, 0.4),
     alineado: true,
-    aplicarStSl: false
   },
 
   {
     rg: enRango(0, 500),
     val: nusselt(1.04, 0, 0.4, 0.36),
     alineado: false,
-    aplicarStSl: false
   },
   {
     rg: enRango(500, 1000),
     val: nusselt(0.71, 0, 0.5, 0.36),
     alineado: false,
-    aplicarStSl: false
   },
   {
     rg: enRango(1000, 200000),
     val: nusselt(0.35, 0.2, 0.6, 0.36),
     alineado: false,
-    aplicarStSl: true
   },
   {
     rg: enRango(200000, 2000000),
     val: nusselt(0.031, 0.2, 0.8, 0.36),
     alineado: false,
-    aplicarStSl: true
   },
 ]
 }
 
-function correccion_nusselt(F, Nu, n_tubos) {
-  // generar tabla interpolada linealmente en excel (7-3)
+function correccion_nusselt(alineado, Nl) {
+  var arr_alin = [0.7, 0.8, 0.86, 0.9, 0.93, 0.93, 0.96, 0.96, 0.96, 0.98, 0.98, 0.98, 0.99, 0.99, 0.99];
+  var arr_escal = [0.64, 0.76, 0.84, 0.89, 0.93, 0.93, 0.96, 0.96, 0.96, 0.98, 0.98, 0.98, 0.99, 0.99, 0.99];
+
+  if (Nl < 16 && Nl >= 1)
+  {
+    if (alineado) return arr_alin[Nl - 1];
+    else return arr_escal[Nl - 1];
+  }
+  else return 1;
 }
 
 function transf_calor_conveccion (Nu, k, D) {
@@ -94,4 +94,22 @@ function transf_calor_conveccion (Nu, k, D) {
 
 function flujo_masico(ro, Vm, Nt, St, L) {
   return ro * Vm * Nt * St * L;
+}
+
+function vmax(alineado, St, Sl, Vm, D) {
+  if (alineado) return vmax_alineado(St, D, Vm);
+  else return vmax_escalonado(St, Sl, D, Vm);
+}
+
+function nusselt_promedio(alineado, Nl, St, Sl, Re, Pr, Prs) {
+  var ecu = tabla_nusselt.ecuaciones;
+  var val_correccion = correccion_nusselt(alineado, Nl);
+
+  // buscar ecuacion en rango y con mismo tipo de configuracion geométrica
+  for (var i in ecu) {
+    if (ecu[i].alineado == alineado && ecu[i].rg(Re)) {
+      var correlacion = ecu[i].val;
+      return correlacion(St, Sl, Re, Pr, Prs);
+    }
+  }
 }
