@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta name="description" content="">
+    <meta name="author" content="Diego Ahumada">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Conveccion bancos de tubos</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap theme -->
+    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/theme.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+    <div class="container">
+
+      <div class="starter-template">
+        <h1>Tipo de banco de tubos</h1>
+        <img src="img/ilustracion_tubos.png"/>
+        <form action="">
+          <input type="radio" name="banco_tubos" id="ra_Alineados" value="alineados" checked/> Alineados  </br>
+          <input type="radio" name="banco_tubos" id="ra_Escalonados" value="escalonados"/> Escalonados </br>
+        </form>
+
+        <h1>Datos de entrada iniciales</h1>
+        <form action="">
+          <table class="table">
+            <tr> <td>Variable</td><td>Descripcion</td><td>Valor</td> </tr>
+            <tr> <td>N<sub>T</sub></td><td>Numero de filas</td><td><input type="text" onchange="updVars()" value="1" id="tb_N_t"/></td> </tr>
+            <tr> <td>N<sub>L</sub></td><td>Numero de columnas</td><td><input type="text" onchange="updVars()" value="1" id="tb_N_l"/></td> </tr>
+            <tr> <td>S<sub>T</sub></td><td>Paso transversal</td><td><input type="text" onchange="updVars()" value="1" id="tb_S_t"/></td> </tr>
+            <tr> <td>S<sub>L</sub></td><td>Distancia entre columnas [m]</td><td><input type="text" onchange="updVars()" value="1" id="tb_S_l"/></td> </tr>
+            <tr> <td>D</td><td>Diámetro de los tubos [m]</td><td><input type="text" onchange="updVars()" value="1" id="tb_D"/></td> </tr>
+            <tr> <td>L</td><td>Longitud de los tubos [m]</td><td><input type="text" onchange="updVars()" value="1" id="tb_L"/></td> </tr>
+          </table>
+        </form>
+
+        <h1> Variables del fluído exterior </h1>
+        <form action="">
+
+          <table class="table">
+            <tr><td>Variable</td><td>Descripcion</td><td>Valor</td> </tr>
+            <tr><td>T<sub>i</sub></td><td>Temperatura de entrada del fluido</td><td><input type="text" onchange="updVars()" value="1" id="tb_T_i"/></td> </tr>
+            <tr><td>T<sub>s</sub></td><td>Temperatura superficial exterior del tubo</td><td><input type="text" onchange="updVars()" value="1" id="tb_T_s"/></td> </tr>
+            <tr><td>V<sub>m</sub></td><td>Velocidad media del fluído</td><td><input type="text" onchange="updVars()" value="1" id="tb_V_m"/></td></tr>
+          </table>
+        </form>
+          <p>Valor de temperatura película supuesta (T<sub>fsp</sub>) <div id="div_tfsp"></div></p>
+      </div>
+
+    </div><!-- /.container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/ramda.min.js"></script>
+    <script src="js/termo.js"></script>
+    <script src="js/ui.js"></script>
+  </body>
+</html>
