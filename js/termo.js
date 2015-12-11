@@ -129,7 +129,7 @@ function nusselt_promedio(alineado, Nl, St, Sl, Re, Pr, Prs) {
   for (var i in ecu) {
     if (ecu[i].alineado == alineado && ecu[i].rg(Re)) {
       var correlacion = ecu[i].val;
-      return correlacion(St, Sl, Re, Pr, Prs);
+      return val_correccion * correlacion(St, Sl, Re, Pr, Prs);
     }
   }
 }

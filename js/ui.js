@@ -84,7 +84,7 @@ function updVars() {
   var re = reynolds(v_vmax, getD(), getRo(), getMu());
   var nus = nusselt_promedio(esAlineado(), getNl(), getSt(), getSl(), re, getPr(), getPrs());
   var h = transf_calor_conveccion(nus, getk(), getD());
-  var As = area_superficial(getD(), getL())
+  var As = area_superficial(getD(), getL(), getNt(), getNl());
   var m = flujo_masico(getRo(), getVm(), getNt(), getSt(), getL());
   var Te = temp_salida(getTs(), getTi(), h, As, m, getCp());
   var tfspr = ratio_comprob(getTi(), Te, tfsp);
